@@ -5,7 +5,7 @@ function get_spaces()
 
   const xhr = new XMLHttpRequest()
   //open a get request with the remote server URL
-  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net/get_spaces?uid=${uid}`)
+  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net:5000/get_spaces?uid=${uid}`)
   //send the Http request
   xhr.send()
   //EVENT HANDLERS
@@ -41,7 +41,7 @@ function add_spaces()
   {
     const xhr = new XMLHttpRequest()
     //open a get request with the remote server URL
-    xhr.open("GET", `https://devnoteapiprod.azurewebsites.net/add_space?uid=${uid}&name=${name}`)
+    xhr.open("GET", `https://devnoteapiprod.azurewebsites.net:5000/add_space?uid=${uid}&name=${name}`)
     //send the Http request
     xhr.send()
     //EVENT HANDLERS
@@ -89,7 +89,7 @@ function delete_space(sid)
   let uid = sessionStorage.getItem("DevNote_uid");
   const xhr = new XMLHttpRequest()
   //open a get request with the remote server URL
-  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net/delete_space?uid=${uid}&sid=${sid}`)
+  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net:5000/delete_space?uid=${uid}&sid=${sid}`)
   //send the Http request
   xhr.send()
   //EVENT HANDLERS
@@ -112,7 +112,7 @@ function view_space(sid)
   let uid = sessionStorage.getItem("DevNote_uid");
   const xhr = new XMLHttpRequest()
   //open a get request with the remote server URL
-  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net/get_space_name_space?uid=${uid}&sid=${sid}`)
+  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net:5000/get_space_name_space?uid=${uid}&sid=${sid}`)
   //send the Http request
   xhr.send()
   //EVENT HANDLERS

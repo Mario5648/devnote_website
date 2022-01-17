@@ -66,7 +66,7 @@ function signup_request()
 
   const xhr = new XMLHttpRequest()
   //open a get request with the remote server URL
-  xhr.open("POST", `https://devnoteapiprod.azurewebsites.net/signup`)
+  xhr.open("POST", `https://devnoteapiprod.azurewebsites.net:5000/signup`)
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify({
       email: email,

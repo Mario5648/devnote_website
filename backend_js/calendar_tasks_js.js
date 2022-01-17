@@ -7,7 +7,7 @@ function request_tasks_calendar(){
 
   const xhr = new XMLHttpRequest()
   //open a get request with the remote server URL
-  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net/get_tasks_calendar?uid=${uid}`)
+  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net:5000/get_tasks_calendar?uid=${uid}`)
   //send the Http request
   xhr.send()
   //EVENT HANDLERS
