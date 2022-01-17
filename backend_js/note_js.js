@@ -44,7 +44,7 @@ function get_notes()
   document.getElementById("note_path").innerHTML = `${space_name} > To-Do`;
   const xhr = new XMLHttpRequest()
   //open a get request with the remote server URL
-  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net:5000/get_notes?uid=${uid}&sid=${sid}`)
+  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net/get_notes?uid=${uid}&sid=${sid}`)
   //send the Http request
   xhr.send()
   //EVENT HANDLERS
@@ -104,7 +104,7 @@ function add_note()
     return;
   }
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", `https://devnoteapiprod.azurewebsites.net:5000/add_note`, true);
+  xhr.open("POST", `https://devnoteapiprod.azurewebsites.net/add_note`, true);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify({
       uid: uid,
@@ -180,7 +180,7 @@ function get_note_info(uid,sid,nid)
 {
   const xhr = new XMLHttpRequest()
   //open a get request with the remote server URL
-  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net:5000/get_note_info?uid=${uid}&sid=${sid}&nid=${nid}`)
+  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net/get_note_info?uid=${uid}&sid=${sid}&nid=${nid}`)
   //send the Http request
   xhr.send()
   //EVENT HANDLERS
@@ -248,7 +248,7 @@ function edit_note()
     return;
   }
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", `https://devnoteapiprod.azurewebsites.net:5000/edit_note`, true);
+  xhr.open("POST", `https://devnoteapiprod.azurewebsites.net/edit_note`, true);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify({
       uid: uid,
@@ -309,7 +309,7 @@ function view_note()
 
   const xhr = new XMLHttpRequest()
   //open a get request with the remote server URL
-  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net:5000/view_note?uid=${uid}&sid=${sid}&nid=${nid}`)
+  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net/view_note?uid=${uid}&sid=${sid}&nid=${nid}`)
   //send the Http request
   xhr.send()
   //EVENT HANDLERS
@@ -352,7 +352,7 @@ function delete_note()
 
   const xhr = new XMLHttpRequest()
   //open a get request with the remote server URL
-  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net:5000/delete_note?uid=${uid}&sid=${sid}&nid=${nid}`)
+  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net/delete_note?uid=${uid}&sid=${sid}&nid=${nid}`)
   //send the Http request
   xhr.send()
   //EVENT HANDLERS

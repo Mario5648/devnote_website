@@ -44,7 +44,7 @@ function get_tasks()
   document.getElementById("todo_path").innerHTML = `${space_name} > To-Do`;
   const xhr = new XMLHttpRequest()
   //open a get request with the remote server URL
-  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net:5000/get_tasks?uid=${uid}&sid=${sid}`)
+  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net/get_tasks?uid=${uid}&sid=${sid}`)
   //send the Http request
   xhr.send()
   //EVENT HANDLERS
@@ -113,7 +113,7 @@ function add_task()
     return;
   }
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", `https://devnoteapiprod.azurewebsites.net:5000/add_task`, true);
+  xhr.open("POST", `https://devnoteapiprod.azurewebsites.net/add_task`, true);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify({
       uid: uid,
@@ -142,7 +142,7 @@ function get_progres(uid,sid,tid,option)
 {
   const xhr = new XMLHttpRequest()
   //open a get request with the remote server URL
-  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net:5000/get_task_progress?uid=${uid}&sid=${sid}&tid=${tid}`)
+  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net/get_task_progress?uid=${uid}&sid=${sid}&tid=${tid}`)
   //send the Http request
   xhr.send()
   //EVENT HANDLERS
@@ -237,7 +237,7 @@ function get_task_info(uid,sid,tid)
 {
   const xhr = new XMLHttpRequest()
   //open a get request with the remote server URL
-  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net:5000/get_task_info?uid=${uid}&sid=${sid}&tid=${tid}`)
+  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net/get_task_info?uid=${uid}&sid=${sid}&tid=${tid}`)
   //send the Http request
   xhr.send()
   //EVENT HANDLERS
@@ -318,7 +318,7 @@ function edit_task()
     return;
   }
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", `https://devnoteapiprod.azurewebsites.net:5000/edit_task`, true);
+  xhr.open("POST", `https://devnoteapiprod.azurewebsites.net/edit_task`, true);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify({
       uid: uid,
@@ -382,7 +382,7 @@ function view_task()
 
   const xhr = new XMLHttpRequest()
   //open a get request with the remote server URL
-  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net:5000/view_task?uid=${uid}&sid=${sid}&tid=${tid}`)
+  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net/view_task?uid=${uid}&sid=${sid}&tid=${tid}`)
   //send the Http request
   xhr.send()
   //EVENT HANDLERS
@@ -434,7 +434,7 @@ function delete_task()
 
   const xhr = new XMLHttpRequest()
   //open a get request with the remote server URL
-  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net:5000/delete_task?uid=${uid}&sid=${sid}&tid=${tid}`)
+  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net/delete_task?uid=${uid}&sid=${sid}&tid=${tid}`)
   //send the Http request
   xhr.send()
   //EVENT HANDLERS
