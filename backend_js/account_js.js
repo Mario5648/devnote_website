@@ -3,7 +3,7 @@ function get_user_info()
   let uid = sessionStorage.getItem("DevNote_uid");
   const xhr = new XMLHttpRequest()
   //open a get request with the remote server URL
-  xhr.open("GET", `http://127.0.0.1:5000/get_user_info?uid=${uid}`)
+  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net/get_user_info?uid=${uid}`)
   //send the Http request
   xhr.send()
   //EVENT HANDLERS
@@ -29,7 +29,7 @@ function get_coding_style_info()
   let uid = sessionStorage.getItem("DevNote_uid");
   const xhr = new XMLHttpRequest()
   //open a get request with the remote server URL
-  xhr.open("GET", `http://127.0.0.1:5000/get_coding_style?uid=${uid}`)
+  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net/get_coding_style?uid=${uid}`)
   //send the Http request
   xhr.send()
   //EVENT HANDLERS
@@ -55,7 +55,7 @@ function update_coding_style()
   let coding_style = document.getElementById("code_theme").value;
   const xhr = new XMLHttpRequest()
   //open a get request with the remote server URL
-  xhr.open("GET", `http://127.0.0.1:5000/update_coding_style?uid=${uid}&codingstyle=${coding_style}`)
+  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net/update_coding_style?uid=${uid}&codingstyle=${coding_style}`)
   //send the Http request
   xhr.send()
   //EVENT HANDLERS
@@ -94,7 +94,7 @@ function update_user_password()
   }
   const xhr = new XMLHttpRequest()
   //open a get request with the remote server URL
-  xhr.open("POST", `http://127.0.0.1:5000/update_password`)
+  xhr.open("POST", `https://devnoteapiprod.azurewebsites.net/update_password`)
   //open a get request with the remote server URL
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify({

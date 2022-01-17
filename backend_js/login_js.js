@@ -13,7 +13,7 @@ function login_request()
 
   const xhr = new XMLHttpRequest()
   //open a get request with the remote server URL
-  xhr.open("POST", `http://127.0.0.1:5000/login`)
+  xhr.open("POST", `https://devnoteapiprod.azurewebsites.net/login`)
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify({
       username: username,
