@@ -126,5 +126,6 @@ function check_login()
     {
       location.replace("./DevNote_login.html")
     }
+    get_user_info();
 
 }

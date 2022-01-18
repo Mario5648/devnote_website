@@ -56,6 +56,7 @@ function get_notes()
       if (data["code"] == "Success")
       {
         display_notes(data);
+        get_coding_style_preference();
       }
 
     }
@@ -80,6 +81,53 @@ function display_notes(data)
   }
 }
 
+
+function get_coding_style_preference()
+{
+  let uid = sessionStorage.getItem("DevNote_uid");
+  const xhr = new XMLHttpRequest()
+  //open a get request with the remote server URL
+  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net/get_coding_style?uid=${uid}`)
+  //send the Http request
+  xhr.send()
+  //EVENT HANDLERS
+  //triggered when the response is completed
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      //parse JSON datax`x
+      data = JSON.parse(xhr.responseText)
+      if (data["code"] == "Success")
+      {
+        populate_coding_style(data["codingstyle"]);
+      }
+
+    }
+  }
+}
+
+
+function populate_coding_style(codingstyle)
+{
+
+  switch(codingstyle)
+  {
+    case 'light':
+    document.getElementById("coding_style_user_preference").innerHTML =  `<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/a11y-light.css"> `
+    break;
+    case 'agate':
+    document.getElementById("coding_style_user_preference").innerHTML =  `<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/agate.css"> `
+    break;
+    case 'atom_dark':
+    document.getElementById("coding_style_user_preference").innerHTML =  `<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/atom-one-dark.css"> `
+    break;
+    case 'atom_light':
+    document.getElementById("coding_style_user_preference").innerHTML =  `<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/atom-one-light.css"> `
+    break;
+    case 'vs_2015':
+    document.getElementById("coding_style_user_preference").innerHTML =  `<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/vs2015.css"> `
+    break;
+  }
+}
 
 function check_name(name)
 {

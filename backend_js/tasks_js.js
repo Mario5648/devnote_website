@@ -57,7 +57,7 @@ function get_tasks()
       {
         display_tasks(data);
       }
-
+      get_coding_style_preference();
     }
   }
 }
@@ -78,6 +78,53 @@ function display_tasks(data)
     let progress = `<center><p class="${data[index]["progress"]}_progress">${data[index]["progress"]}</p></center>`;
     let details_button = `<center><a onclick="open_details('${data[index]["tid"]}')" class="edit_button"><i class="fa fa-edit"></i></a></center>`;
     table.row.add([name,progress,details_button]).draw();
+  }
+}
+
+function get_coding_style_preference()
+{
+  let uid = sessionStorage.getItem("DevNote_uid");
+  const xhr = new XMLHttpRequest()
+  //open a get request with the remote server URL
+  xhr.open("GET", `https://devnoteapiprod.azurewebsites.net/get_coding_style?uid=${uid}`)
+  //send the Http request
+  xhr.send()
+  //EVENT HANDLERS
+  //triggered when the response is completed
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      //parse JSON datax`x
+      data = JSON.parse(xhr.responseText)
+      if (data["code"] == "Success")
+      {
+        populate_coding_style(data["codingstyle"]);
+      }
+
+    }
+  }
+}
+
+
+function populate_coding_style(codingstyle)
+{
+
+  switch(codingstyle)
+  {
+    case 'light':
+    document.getElementById("coding_style_user_preference").innerHTML =  `<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/a11y-light.css"> `
+    break;
+    case 'agate':
+    document.getElementById("coding_style_user_preference").innerHTML =  `<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/agate.css"> `
+    break;
+    case 'atom_dark':
+    document.getElementById("coding_style_user_preference").innerHTML =  `<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/atom-one-dark.css"> `
+    break;
+    case 'atom_light':
+    document.getElementById("coding_style_user_preference").innerHTML =  `<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/atom-one-light.css"> `
+    break;
+    case 'vs_2015':
+    document.getElementById("coding_style_user_preference").innerHTML =  `<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/vs2015.css"> `
+    break;
   }
 }
 
@@ -105,9 +152,10 @@ function add_task()
       if (radios[i].type === 'radio' && radios[i].checked) {
           // get value, set checked flag or do whatever you need to
           progress = radios[i].value;
+          radios[i].checked = false;
+          break;
       }
   }
-
   if (!check_name(name))
   {
     return;
@@ -153,7 +201,6 @@ function get_progres(uid,sid,tid,option)
       data = JSON.parse(xhr.responseText)
       if (data["code"] == "Success")
       {
-        console.log(data);
         if(option == "details")
         {
           document.getElementById(`${data[0]["progress"]}_option`).checked = true;
@@ -336,7 +383,6 @@ function edit_task()
       data = JSON.parse(xhr.responseText)
       if (data["code"] == "Success")
       {
-        console.log(data);
         location.reload();
       }
 
@@ -391,7 +437,6 @@ function view_task()
     if (xhr.status === 200) {
       //parse JSON datax`x
       data = JSON.parse(xhr.responseText)
-      console.log(data);
       if (data["code"] == "Success")
       {
 
@@ -411,7 +456,7 @@ function view_task()
         {
           document.getElementById("note_body").innerHTML = data[0]["content"];
           //Get the number of code blocks (The first half will be in the note body)
-          var num_code_blocks = document.getElementsByClassName("ql-syntax").length/2;
+          var num_code_blocks = document.getElementsByClassName("ql-syntax").length;
 
           //Iterate through the blocks and place a code element with the hljs class
           for(let block = 0; block < num_code_blocks; block+=1)
